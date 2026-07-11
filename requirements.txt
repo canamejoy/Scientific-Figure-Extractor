@@ -1,0 +1,23 @@
+# ── Core UI ──────────────────────────────────────────────────────────────
+streamlit>=1.37,<2.0
+
+# ── PDF parsing & imaging ────────────────────────────────────────────────
+pdfplumber>=0.11.4,<0.12
+pillow>=10.4.0,<12.0
+
+# ── Page-layout detection (primary figure locator) ───────────────────────
+# DocLayout-YOLO detects figure/caption regions on rendered pages (robust
+# across journals). Pulls PyTorch (~2 GB); if you cannot install it, the
+# parser automatically falls back to caption-anchor heuristics.
+doclayout-yolo>=0.0.3
+huggingface-hub>=0.23
+
+# ── LLM orchestration (LangChain) — optional (chat + vlm-assisted mode) ───
+langchain>=0.3,<2.0
+langchain-core>=0.3,<2.0
+langchain-openai>=0.2,<2.0        # also used for the Ollama backend
+langchain-anthropic>=0.3,<2.0     # only for VLM_PROVIDER=anthropic
+
+# ── Typing & configuration ───────────────────────────────────────────────
+pydantic>=2.8,<3.0
+python-dotenv>=1.0.1,<2.0
