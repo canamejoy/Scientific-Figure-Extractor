@@ -1,4 +1,4 @@
-# 🔬 Scientific Figure Extractor
+# Scientific Figure Extractor
 
 **Turn a scientific PDF into a clean dataset of figures + captions — pure Python, no LLM, no API keys.**
 
@@ -6,19 +6,19 @@ This is the figure-extraction stage of a multi-agent paper-analysis pipeline. It
 
 ---
 
-## ✨ Key features
+## Key features
 
-- **📄 Robust figure detection** — every page is analyzed by [DocLayout-YOLO](https://github.com/opendatalab/DocLayout-YOLO) (the layout model used by MinerU), which locates `figure` and `figure_caption` regions *visually*, independent of how the PDF encodes its text — so two-column journals (APS/REVTeX, IEEE, Nature, Elsevier, …) work reliably.
-- **🔤 Caption-anchor fallback** — when the layout model is unavailable (it pulls PyTorch), the parser falls back to a caption-anchor heuristic (`Figure 3:`, `Fig. 2.`, `FIGURE 4 —`) that maps each caption to the graphic region it describes. No dependency is mandatory.
-- **🖼️ High-resolution, lossless output** — each figure is rendered to a PNG at 300 DPI (configurable) at its original aspect ratio, with its full caption verbatim.
-- **📦 Structured dataset** — `figure_001.png` + `figure_001.txt` + `figure_001.json` per figure, plus an `index.json` — trivial for the next agent to consume.
-- **🧰 CLI + optional Streamlit viewer**, fully typed (Pydantic v2), with tests that need no model or network.
+- **Robust figure detection** — every page is analyzed by [DocLayout-YOLO](https://github.com/opendatalab/DocLayout-YOLO) (the layout model used by MinerU), which locates `figure` and `figure_caption` regions *visually*, independent of how the PDF encodes its text — so two-column journals (APS/REVTeX, IEEE, Nature, Elsevier, …) work reliably.
+- **Caption-anchor fallback** — when the layout model is unavailable (it pulls PyTorch), the parser falls back to a caption-anchor heuristic (`Figure 3:`, `Fig. 2.`, `FIGURE 4 —`) that maps each caption to the graphic region it describes. No dependency is mandatory.
+- **High-resolution, lossless output** — each figure is rendered to a PNG at 300 DPI (configurable) at its original aspect ratio, with its full caption verbatim.
+- **Structured dataset** — `figure_001.png` + `figure_001.txt` + `figure_001.json` per figure, plus an `index.json` — trivial for the next agent to consume.
+- **CLI + optional Streamlit viewer**, fully typed (Pydantic v2), with tests that need no model or network.
 
 > **No panels, no LLM.** This tool extracts *complete* figures and their captions. Panel-level reasoning ("what does panel (b) show?") is left to the downstream analysis agent, which reads the whole figure plus the full caption — a correct whole figure beats a mis-cropped panel.
 
 ---
 
-## 🏗️ How it works
+## How it works
 
 ```
    PDF ──► render each page ──► DocLayout-YOLO ──► figure + caption regions
@@ -31,7 +31,7 @@ This is the figure-extraction stage of a multi-agent paper-analysis pipeline. It
 
 ---
 
-## 🚀 Quickstart
+## Quickstart
 
 ```bash
 git clone https://github.com/<you>/AI-Scientific-Figure-Analyze.git
@@ -52,7 +52,7 @@ pip install -r requirements.txt
 
 ---
 
-## 📖 Usage
+## Usage
 
 ### Command line
 
@@ -119,7 +119,7 @@ DatasetExporter("dataset").export(document, paper_name="mypaper")
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
 The default needs no configuration. Optional environment variables (see `.env.example`):
 
@@ -130,7 +130,7 @@ The default needs no configuration. Optional environment variables (see `.env.ex
 
 ---
 
-## 🗂️ Repository layout
+## Repository layout
 
 ```
 ├── src/
@@ -151,7 +151,7 @@ The default needs no configuration. Optional environment variables (see `.env.ex
 
 ---
 
-## 🧪 Tests
+## Tests
 
 ```bash
 pip install -r requirements-dev.txt
@@ -162,10 +162,10 @@ The suite covers figure + caption extraction (heuristic path), the dataset expor
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Issues and PRs welcome — use the [bug report](.github/ISSUE_TEMPLATE/bug_report.md) and [feature request](.github/ISSUE_TEMPLATE/feature_request.md) templates. Interesting areas: caption-above-figure layouts, multi-figure pages, and table extraction.
 
-## 📄 License
+## License
 
 Released under the [MIT License](LICENSE).
